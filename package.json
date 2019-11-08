@@ -1,0 +1,27 @@
+{
+  "name": "duo_carbonblack_provider",
+  "version": "1.0.0",
+  "description": "Demonstration of a simple Nodejs web server with Duo authentication using WebSDK 3 authentication flow.",
+  "main": "clientProvider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TaEduard/Duo_carbonblack_provider.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TaEduard/Duo_carbonblack_provider/issues"
+  },
+  "homepage": "https://github.com/TaEduard/Duo_carbonblack_provider#readme",
+  "dependencies": {
+    "@duosecurity/duo_web": "^1.0.4",
+    "http": "0.0.0",
+    "node-session": "^1.2.1",
+    "querystring": "^0.2.0",
+    "url": "^0.11.0"
+  }
+}
