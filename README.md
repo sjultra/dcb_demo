@@ -22,3 +22,7 @@ To run the server on port 8080:
 ```
 pm2 start pm2.config.json
 ```
+# To restart #
+```
+pm2 restart dcb
+```
