@@ -1,0 +1,8 @@
+{
+  "apps": [
+    {
+      "name": "dcb",
+      "script": "./server.js"
+    }
+  ]
+}

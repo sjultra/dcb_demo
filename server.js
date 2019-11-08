@@ -16,15 +16,21 @@ if (fs.existsSync(path.join(__dirname, `./config.local.js`))) {
   ikey = require('./config.local.js').ikey
   skey = require('./config.local.js').skey
   api_hostname = require('./config.local.js').api_hostname
-  akey = require('./config.local.js').akey
+  akey = require('./config.local.js').akey || 'dummy'
   cookieTimer = require('./config.local.js').cookieTimer
 } else {
   ikey = require('./config.js').ikey
   skey = require('./config.js').skey
-  api_hostname = require('../config.js').api_hostname
-  akey = require('./config.js').akey
+  api_hostname = require('./config.js').api_hostname
+  akey = require('./config.js').akey || 'dummy'
   cookieTimer = require('./config.js').cookieTimer
 }
+
+if (akey === 'dummy') {
+  console.log('Configure the server properly')
+  process.exit(1)
+}
+
 session = new NodeSession({
   secret: akey,
   driver: 'memory',
