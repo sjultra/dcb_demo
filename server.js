@@ -9,8 +9,8 @@ const fs = require('fs')
 const path = require('path')
 const { data } = require('./data')
 const NodeSession = require('node-session');
-
-let ikey, skey, akey, api_hostname
+const redirecter = require('./redirecter')
+let ikey, skey, akey, api_hostname, hostname, maxTime
 
 if (fs.existsSync(path.join(__dirname, `./config.local.js`))) {
   ikey = require('./config.local.js').ikey
@@ -18,12 +18,16 @@ if (fs.existsSync(path.join(__dirname, `./config.local.js`))) {
   api_hostname = require('./config.local.js').api_hostname
   akey = require('./config.local.js').akey || 'dummy'
   cookieTimer = require('./config.local.js').cookieTimer
+  hostname = require('./config.local.js').hostname
+  maxTime = require('./config.local.js').redirectTimer
 } else {
   ikey = require('./config.js').ikey
   skey = require('./config.js').skey
   api_hostname = require('./config.js').api_hostname
   akey = require('./config.js').akey || 'dummy'
   cookieTimer = require('./config.js').cookieTimer
+  hostname = require('./config.js').hostname
+  maxTime = require('./config.js').redirectTimer
 }
 
 if (akey === 'dummy') {
@@ -41,6 +45,11 @@ session = new NodeSession({
 const post_action = '/'
 
 const serverHandler = (req, res) => {
+  if (req.headers.host === hostname && req.headers['x-forwarded-proto'] === 'http') {
+    console.log("http req")
+    res.writeHead(200, { 'Content-Type': 'text/html' })
+    return res.end(redirecter(hostname, maxTime))
+  }
   let base_url = url.parse(req.url).pathname
   let method = req.method
   if (method === 'GET') {

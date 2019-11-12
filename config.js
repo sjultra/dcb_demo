@@ -3,5 +3,7 @@ module.exports = {
   skey: '',
   akey: '',
   api_hostname: '',
-  cookieTimer: 2
+  cookieTimer: 2,
+  url: '',
+  maxTime: 10
 }
