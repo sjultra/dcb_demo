@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/TaEduard/Duo_carbonblack_provider.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Eduard Tamsa",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/TaEduard/Duo_carbonblack_provider/issues"
   },
